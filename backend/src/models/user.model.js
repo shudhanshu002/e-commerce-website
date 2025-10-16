@@ -20,7 +20,7 @@ const userSchema = new Schema(
         return this.provider === 'local';
       },
     },
-    phone: { type: String, sparse: true, unique: true }, // Sparse allows multiple nulls
+    phone: { type: String, sparse: true, unique: true }, 
     role: { type: String, enum: ['USER', 'ADMIN'], default: 'USER' },
     isEmailVerified: { type: Boolean, default: false },
     emailVerificationToken: String,

@@ -6,7 +6,6 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 
 // Admin: Create Product
 const createProduct = asyncHandler(async (req, res) => {
-  // ... validation logic
   const product = await Product.create({ ...req.body, owner: req.user._id });
   return res.status(201).json(new ApiResponse(201, product, 'Product created'));
 });
@@ -23,7 +22,6 @@ const getProductBySlug = asyncHandler(async (req, res) => {
 
 // Public: Get all products with filtering and pagination
 const getAllProducts = asyncHandler(async (req, res) => {
-  // Basic implementation, will be expanded later with filtering/sorting
   const products = await Product.find({ isActive: true });
   return res.status(200).json(new ApiResponse(200, products));
 });

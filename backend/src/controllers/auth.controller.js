@@ -5,7 +5,7 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 import sendEmail from '../utils/email.js';
 import crypto from 'crypto';
 
-// --- Reusable Helper Function ---
+
 const generateTokensAndSetCookies = async (user, res) => {
   const accessToken = user.generateAccessToken();
   const refreshToken = user.generateRefreshToken();
@@ -35,7 +35,7 @@ const generateTokensAndSetCookies = async (user, res) => {
     );
 };
 
-// --- Core Auth Controllers ---
+// ---  Auth Controllers ---
 const registerUser = asyncHandler(async (req, res) => {
   const { fullName, username, email, password, phoneNumber } = req.body;
   if (

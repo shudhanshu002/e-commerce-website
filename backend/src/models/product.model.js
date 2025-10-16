@@ -27,7 +27,6 @@ const productSchema = new Schema(
   { timestamps: true },
 );
 
-productSchema.plugin(mongooseAggregatePaginate);
 
 productSchema.statics.calculateAverageRating = async function (productId) {
   const stats = await Review.aggregate([
@@ -50,7 +49,6 @@ productSchema.statics.calculateAverageRating = async function (productId) {
         averageRating: Math.round(stats[0].averageRating * 10) / 10, // Round to one decimal place
       });
     } else {
-      // If no reviews, reset to default
       await this.findByIdAndUpdate(productId, {
         numberOfReviews: 0,
         averageRating: 0,

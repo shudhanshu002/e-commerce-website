@@ -11,7 +11,6 @@ const getCart = asyncHandler(async (req, res) => {
     'title price images stock',
   );
   if (!cart) {
-    // If no cart, create one for the user
     const newCart = await Cart.create({
       user: req.user._id,
       items: [],
@@ -41,10 +40,8 @@ const addItemToCart = asyncHandler(async (req, res) => {
   const itemIndex = cart.items.findIndex((p) => p.product.equals(productId));
 
   if (itemIndex > -1) {
-    // Product exists in cart, update quantity
     cart.items[itemIndex].quantity += quantity;
   } else {
-    // Product does not exist in cart, add new item
     cart.items.push({ product: productId, quantity, price: product.price });
   }
 

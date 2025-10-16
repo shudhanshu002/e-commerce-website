@@ -37,11 +37,9 @@ const toggleWishlistItem = asyncHandler(async (req, res) => {
   let message = '';
 
   if (itemIndex > -1) {
-    // Item exists, remove it
     wishlist.items.splice(itemIndex, 1);
     message = 'Item removed from wishlist';
   } else {
-    // Item does not exist, add it
     wishlist.items.push({ product: productId });
     message = 'Item added to wishlist';
   }
